@@ -1,0 +1,35 @@
+#+Title: Power optimization by load monitoring and control
+#+Author: Prasanna Rajaram
+* Introduction
+In conventional power saving techniques, the user has to be vigilant
+in turning ON/OFF electrical loads as and when required. This ensure
+optimal consumption and reduce power bill for the consumer. This
+effort can be automated and optimized better. This project will enable
+the user to control loads from anywhere as long as the mobile device
+and the Raspberry Pi (@ home) are connected to Internet.  
+
+The intention is to retrofit this system into the existing domestic
+wiring scheme of the user with minimal changes as much as possible.
+
+** Purpose of this document
+The purpose of this document is to list down the design specification
+and design details for this home automation project. 
+
+** Objectives
+1. The project will enable users to switch electrical loads through a
+   mobile application
+2. The load ON/OFF times shall be logged. This logged information can
+   be used to provide the user with suggestions for power saving.
+3. Power factor correction for inductive loads and switching in/out
+   "tank circuits" shall also be done based on the load conditions
+4. ....
+5. .......
+
+
+* Design
+Relays controlled by a Single Board Computer (SBC) such as Raspberry
+Pi or microcontroller such as Arduino will be used to switch ON/OFF
+the electrical loads. The relays will be wired to the existing
+switches in "two-way switch" fashion. This will allow the user to turn
+ON/OFF either from the application or directly from the switch.
+ 
