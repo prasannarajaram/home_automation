@@ -25,11 +25,53 @@ and design details for this home automation project.
 4. ....
 5. .......
 
-
 * Design
-Relays controlled by a Single Board Computer (SBC) such as Raspberry
-Pi or microcontroller such as Arduino will be used to switch ON/OFF
-the electrical loads. The relays will be wired to the existing
-switches in "two-way switch" fashion. This will allow the user to turn
-ON/OFF either from the application or directly from the switch.
- 
+
+* Wiring scheme
+In the conventional power switching arrangement, the following
+modifications should be made to implement this design. The SPST switch
+used conventionally to switch ON/OFF loads, should be replaced with a
+DPST switch (commonly known as "two-way" switch). A relay with DPST
+switching arrangement should be connected to the new DPST switch. This
+two-way switch wiring scheme established by the new two-way switch and
+the DPST portion of the relay allows the user to switch ON/OFF loads
+either from the two switch or by microcontroller. The relay shall be
+driven by a Arduino microcontrolller. The wire leading to the load
+from the relay contact shall have an ACS712 (Hall effect sensor)
+connected in series before the load. The pupose of the Hall effect
+sensor is to measure the current drawn by the load. The output of the
+Hall effect sensor shall be wired as input to one of the analog
+channels of the Arduino controller.  The wiring drawing is presented below
+
+##### Wiring diagram - insert here #####
+
+* High level block diagram
+The following portions shall make up this design
+1. Wiring scheme with modified switch, relay and Hall effect sensor
+2. Arduino (Micro) microcontroller
+3. Raspberry Pi
+
+** Arduino micro controller
+The microntroller will be able to see the ON times of all the loads if
+either they are switched via the controller itself or directly by the
+DPST switch. This information is logged at the microntroller level and
+passed on to Raspberry Pi. 
+
+Provided the Arduino is able to communicate directly to a server over
+the internet, then all data analysis and HMI functions can be passed
+on to application in the server machine. Data can be pulled over the
+network to a mobile device to control and perform HMI functions.
+** Raspberry Pi
+*** HMI
+The Pi is responsible for pulling all the data logged by the
+microcontroller and present it on screen for the user to review. The
+Pi functions like an HMI. A small 7" touch enabled screen could be
+wired to RPi to enable users to control loads and view reports locally
+*** Data analysis
+The next function of Pi is to do statistical analysis of the logged
+information. This analysis will come out with results that could
+provide suggestions to the user with load profiles. This report will
+tell the user how much power was consumed by respective loads. It will
+also present the normal ON times of the load during a day. Based on
+this data, the user can take an informed decision about turning OFF
+loads at certain time of the day.
