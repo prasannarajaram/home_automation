@@ -1,3 +1,4 @@
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt,titlepage]
 #+Title: Power optimization by load monitoring and control
 #+Author: Prasanna Rajaram
 * Introduction
@@ -104,3 +105,26 @@ conditioner "turn-ON" times information based on user behaviour. This
 information could be used to predict when the user would want to have
 the air conditioner turned-ON/OFF from the humidity and temperature
 sensor readings.
+
+* Bill of material
+| S.No | Mandatory | Part No. | Model Name             | Approx. Cost |
+|      | /Optional |          |                        |              |
+|------+-----------+----------+------------------------+--------------|
+|      | <c>       |          |                        |              |
+|    1 | M         |          | Arduino Micro          |              |
+|    2 | M         |          | Arduino Wifi Shield    |              |
+|    3 | O         |          | Raspberry Pi           |              |
+|    4 | M         |          | Relay board (X relays) |              |
+|    5 | M         |          | Hall effect sensor     |              |
+|    6 | O         |          | Humidity sensor        |              |
+|    7 | O         |          | Temperature sensor     |              |
+|    8 | O         |          | Gas (LPG) detector     |              |
+|    9 | M         |          | Arduino Wifi Shield    |              |
+|   10 | M         |          | Breadboard             |              |
+|   11 | M         |          | Power supply +5V 2A    |              |
+|   12 | M         |          | Resistors              |              |
+|      |           |          | - 220 Ω                |              |
+|      |           |          | - 10k Ω                |              |
+|      |           |          | - ... Ω                |              |
+|   13 | M         |          | Capacitors             |              |
+|      |           |          | - 10 µF                |              |
