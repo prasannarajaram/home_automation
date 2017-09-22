@@ -1,7 +1,36 @@
-#+LATEX_CLASS_OPTIONS: [a4paper,11pt,titlepage]
-#+Title: Power optimization by load monitoring and control
-#+Author: Prasanna Rajaram
-* Introduction
+% Created 2017-09-17 Sun 01:08
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Prasanna Rajaram}
+\date{\today}
+\title{Power optimization by load monitoring and control}
+\hypersetup{
+ pdfauthor={Prasanna Rajaram},
+ pdftitle={Power optimization by load monitoring and control},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.0.50 (Org mode 9.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+\label{sec:orgfb07e53}
 In conventional power saving techniques, the user has to be vigilant
 in turning ON/OFF electrical loads as and when required. This ensure
 optimal consumption and reduce power bill for the consumer. This
@@ -12,26 +41,33 @@ and the Raspberry Pi (@ home) are connected to Internet.
 The intention is to retrofit this system into the existing domestic
 wiring scheme of the user with minimal changes as much as possible.
 
-** Purpose of this document
+\subsection{Purpose of this document}
+\label{sec:org22e2998}
 The purpose of this document is to list down the design specification
 and design details for this home automation project. 
 
-** Objectives
-1. The project will enable users to switch electrical loads through a
-   mobile application
-2. The load ON/OFF times shall be logged. This logged information can
-   be used to provide the user with suggestions for power saving.
-3. Using interfaces like gas detectors, one can log information if
-   there were any gas leakage in any one of the apartments using
-   centralized logging system.
-4. Power factor correction for inductive loads and switching in/out
-   "tank circuits" shall also be done based on the load conditions
-5. 
-6. .......
+\subsection{Objectives}
+\label{sec:org2c52611}
+\begin{enumerate}
+\item The project will enable users to switch electrical loads through a
+mobile application
+\item The load ON/OFF times shall be logged. This logged information can
+be used to provide the user with suggestions for power saving.
+\item Using interfaces like gas detectors, one can log information if
+there were any gas leakage in any one of the apartments using
+centralized logging system.
+\item Power factor correction for inductive loads and switching in/out
+"tank circuits" shall also be done based on the load conditions
+\item 
 
-* Design
+\item \ldots{}\ldots{}.
+\end{enumerate}
 
-* Wiring scheme
+\section{Design}
+\label{sec:org95caea1}
+
+\section{Wiring scheme}
+\label{sec:org413352c}
 In the conventional power switching arrangement, the following
 modifications should be made to implement this design. The SPST switch
 used conventionally to switch ON/OFF loads, should be replaced with a
@@ -47,26 +83,33 @@ sensor is to measure the current drawn by the load. The output of the
 Hall effect sensor shall be wired as input to one of the analog
 channels of the Arduino controller.  The wiring drawing is presented below
 
-##### Wiring diagram - insert here #####
+\#\#\#\#\# Wiring diagram - insert here \#\#\#\#\#
 
-* High level block diagram
+\section{High level block diagram}
+\label{sec:orge222f56}
 The following portions shall make up this design
-1. Wiring scheme with modified switch, relay and Hall effect sensor
-2. Arduino (Micro) micro controller
-3. Raspberry Pi
+\begin{enumerate}
+\item Wiring scheme with modified switch, relay and Hall effect sensor
+\item Arduino (Micro) micro controller
+\item Raspberry Pi
+\end{enumerate}
 
-** Arduino micro controller
+\subsection{Arduino micro controller}
+\label{sec:org469cd2b}
 The microntroller will be able to see the ON times of all the loads if
 either they are switched via the controller itself or directly by the
 DPST switch. This information is logged at the microntroller level and
 passed on to Raspberry Pi. 
-** Raspberry Pi
-*** HMI
+\subsection{Raspberry Pi}
+\label{sec:orgb4bce5f}
+\subsubsection{HMI}
+\label{sec:org79aa924}
 The Pi is responsible for pulling all the data logged by the
 microcontroller and present it on screen for the user to review. The
 Pi functions like an HMI. A small 7" touch enabled screen could be
 wired to RPi to enable users to control loads and view reports locally
-*** Data analysis
+\subsubsection{Data analysis}
+\label{sec:org99d6979}
 The next function of Pi is to do statistical analysis of the logged
 information. This analysis will come out with results that could
 provide suggestions to the user with load profiles. This report will
@@ -75,13 +118,15 @@ also present the normal ON times of the load during a day. Based on
 this data, the user can take an informed decision about turning OFF
 loads at certain time of the day.
 
-** RPi Alternative
+\subsection{RPi Alternative}
+\label{sec:org9d4aded}
 Provided the Arduino is able to communicate directly to a server over
 the internet (using Arduino Wifi Shield), then all data analysis and
 HMI functions can be passed on to application in the server
 machine. Data can be pulled over the network to a mobile device to
 control and perform HMI functions.
-** HMI UI Design
+\subsection{HMI UI Design}
+\label{sec:org03dafd8}
 It is envisaged to have a one screen display which will display all
 types of loads on the first screen. The groups could be like lights,
 fans, air conditioners, heaters etc.  When the user taps on one of the
@@ -98,7 +143,8 @@ balcony / kitchen / hall. So depending the season of the year, time of
 day the list could dynamically display only the frequently used loads
 for control besides the exhaustive list.
 
-* Some special controls
+\section{Some special controls}
+\label{sec:org3d50bea}
 Assuming that a humidity sensor and temperature sensor module are
 wired into the Arduino, we can collect humidity, temperature and air
 conditioner "turn-ON" times information based on user behaviour. This
@@ -106,28 +152,30 @@ information could be used to predict when the user would want to have
 the air conditioner turned-ON/OFF from the humidity and temperature
 sensor readings.
 
-* Bill of material
-| S.No | Mandatory | Part No. | Model Name             | Approx. Cost |
-|      | /Optional |          |                        |              |
-|------+-----------+----------+------------------------+--------------|
-|      | <c>       |          |                        |              |
-|    1 | M         |          | Arduino Micro          |              |
-|    2 | M         |          | Arduino Wifi Shield    |              |
-|    3 | O         |          | Raspberry Pi           |              |
-|    4 | M         |          | Relay board (X relays) |              |
-|    5 | M         |          | Hall effect sensor     |              |
-|    6 | O         |          | Humidity sensor        |              |
-|    7 | O         |          | Temperature sensor     |              |
-|    8 | O         |          | Gas (LPG) detector     |              |
-|    9 | M         |          | Arduino Wifi Shield    |              |
-|   10 | M         |          | Breadboard             |              |
-|   11 | M         |          | Power supply +5V 2A    |              |
-|   12 | M         |          | Resistors              |              |
-|      |           |          | - 220 Ω                |              |
-|      |           |          | - 10k Ω                |              |
-|      |           |          | - ... Ω                |              |
-|   13 | M         |          | Capacitors             |              |
-|      |           |          | - 10 µF                |              |
-* Procurement plan
-
-
+\section{Bill of material}
+\label{sec:orgbc063b6}
+\begin{center}
+\begin{tabular}{rclll}
+S.No & Mandatory & Part No. & Model Name & Approx. Cost\\
+ & /Optional &  &  & \\
+\hline
+1 & M &  & Arduino Micro & \\
+2 & M &  & Arduino Wifi Shield & \\
+3 & O &  & Raspberry Pi & \\
+4 & M &  & Relay board (X relays) & \\
+5 & M &  & Hall effect sensor & \\
+6 & O &  & Humidity sensor & \\
+7 & O &  & Temperature sensor & \\
+8 & O &  & Gas (LPG) detector & \\
+9 & M &  & Arduino Wifi Shield & \\
+10 & M &  & Breadboard & \\
+11 & M &  & Power supply +5V 2A & \\
+12 & M &  & Resistors & \\
+ &  &  & - 220 Ω & \\
+ &  &  & - 10k Ω & \\
+ &  &  & - \ldots{} Ω & \\
+13 & M &  & Capacitors & \\
+ &  &  & - 10 µF & \\
+\end{tabular}
+\end{center}
+\end{document}
